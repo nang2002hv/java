@@ -1,47 +1,64 @@
+/* Welcome to Nguyen Trac Nang
+    @author : ASUS
+    Date : 05/09/2022
+    Time : 11:42 SA
+    ProjectName : Java
+    -------------GOOD NIGHT --------
+*/
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
-
-class SV {
-    static int id = 1;
-    String ten;
-    String ns;
-    String lop;
-    String maSV;
-    float GPA;
-
-    void Input(Scanner sc) {
-        if (id < 10)
-            maSV = "B20DCCN00";
-        else if (id < 100)
-            maSV = "B20DCCN0";
-        else
-            maSV = "B20DCCN";
-        maSV += Integer.toString(id++);
-        sc.nextLine();
-        ten = sc.nextLine();
-        lop = sc.nextLine();
-        ns = sc.nextLine();
-        GPA = sc.nextFloat();
-        if (ns.charAt(1) == '/')
-            ns = '0' + ns;
-        if (ns.charAt(4) == '/')
-            ns = ns.substring(0, 3) + '0' + ns.substring(3);
-    }
-
-    void Output() {
-        System.out.printf("%s %s %s %s %.2f\n", maSV, ten, lop, ns, GPA);
-    }
-}
 
 public class J07010 {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("SV.in"));
-        int n = sc.nextInt();
-        for (int i = 0; i < n; i++) {
-            SV sv = new SV();
-            sv.Input(sc);
-            sv.Output();
+        Scanner sc = new Scanner(new File("SV.in") );
+        ArrayList<SinhVien2> ds = new ArrayList<>();
+        int t = Integer.parseInt(sc.nextLine());
+        while(t-- > 0){
+            String ten = sc.nextLine();
+            String lop = sc.nextLine();
+            String ngaysinh = sc.nextLine();
+            float diem = Float.parseFloat(sc.nextLine());
+            SinhVien2 sinhVien2 = new SinhVien2(ten,ngaysinh,lop,diem);
+            sinhVien2.xuly();
+            ds.add(sinhVien2);
         }
+        for(SinhVien2 x : ds){
+            System.out.println(x);
+        }
+    }
+}
+
+class SinhVien2{
+    private String stt, ten, ngaysinh,lop;
+    private float diem;
+    static int dem = 0;
+    public SinhVien2(String ten, String ngaysinh, String lop, float diem) {
+        this.ten = ten;
+        this.ngaysinh = ngaysinh;
+        this.lop = lop;
+        this.diem = diem;
+        this.stt = "B20DCCN";
+    }
+
+    public String chuanHoaNgaySinh(String ngaysinh){
+        if(ngaysinh.charAt(1) == '/') ngaysinh ="0" + ngaysinh;
+        if(ngaysinh.charAt(4) == '/') ngaysinh = ngaysinh.substring(0,3) + "0" + ngaysinh.substring(3);
+        return ngaysinh;
+    }
+
+    public void xuly(){
+        dem++;
+        String tmp = String.valueOf(dem);
+        while(tmp.length() < 3) tmp = "0" + tmp;
+        stt = stt + tmp;
+        ngaysinh = chuanHoaNgaySinh(ngaysinh);
+    }
+
+    @Override
+    public String toString() {
+        return this.stt + " "+ this.ten + " "+ this.lop + " " + this.ngaysinh + " " + String.format("%.2f",diem);
     }
 }
