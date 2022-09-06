@@ -25,7 +25,7 @@ public class J05023 {
             SinhVien4 sinhVien = new SinhVien4(ten,masinhvien,lop,email);
             ds.add(sinhVien);
         }
-        //Collections.sort(ds, (SinhVien1 o1, SinhVien1 o2) -> o1.getLop().compareTo(o2.getLop()));
+        //Collections.sort(ds, (J05022.SinhVien1 o1, J05022.SinhVien1 o2) -> o1.getLop().compareTo(o2.getLop()));
         int test = Integer.parseInt(sc.nextLine());
         while(test -- > 0){
             String tenlop = sc.nextLine();

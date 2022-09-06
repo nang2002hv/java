@@ -1,4 +1,4 @@
-/* Welcome to Nguyen Trac Nang
+package J05022;/* Welcome to Nguyen Trac Nang
     @author : ASUS
     Date : 04/09/2022
     Time : 10:11 CH
@@ -8,7 +8,6 @@
 
 import java.util.ArrayList;
 
-import java.util.Collections;
 import java.util.Scanner;
 
 public class J05022 {
@@ -24,7 +23,7 @@ public class J05022 {
             SinhVien1 sinhVien = new SinhVien1(ten,masinhvien,lop,email);
             ds.add(sinhVien);
         }
-        //Collections.sort(ds, (SinhVien1 o1, SinhVien1 o2) -> o1.getLop().compareTo(o2.getLop()));
+        //Collections.sort(ds, (J05022.SinhVien1 o1, J05022.SinhVien1 o2) -> o1.getLop().compareTo(o2.getLop()));
         int test = Integer.parseInt(sc.nextLine());
         while(test -- > 0){
             String tenlop = sc.nextLine();
@@ -38,26 +37,3 @@ public class J05022 {
     }
 }
 
-class SinhVien1{
-    private  String ten, masinhvien,lop,email;
-
-    public SinhVien1(String ten, String masinhvien, String lop, String email) {
-        this.ten = ten;
-        this.masinhvien = masinhvien;
-        this.lop = lop;
-        this.email = email;
-    }
-
-    public String getLop() {
-        return lop;
-    }
-
-    public String getMasinhvien() {
-        return masinhvien;
-    }
-
-    @Override
-    public String toString() {
-        return this.masinhvien +" "+this.ten + " "+ this.lop+" "+ this.email;
-    }
-}
